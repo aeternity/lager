@@ -1,19 +1,21 @@
+REBAR ?= ./rebar
+
 .PHONY: all compile deps clean distclean test check_plt build_plt dialyzer \
 	    cleanplt
 
 all: deps compile
 
 compile: deps
-	./rebar compile
+	${REBAR} compile
 
 deps:
-	test -d deps || ./rebar get-deps
+	test -d deps || ${REBAR} get-deps
 
 clean:
-	./rebar clean
+	${REBAR} clean
 
 distclean: clean
-	./rebar delete-deps
+	${REBAR} delete-deps
 
 DIALYZER_APPS = kernel stdlib erts sasl eunit syntax_tools compiler crypto \
 				common_test
