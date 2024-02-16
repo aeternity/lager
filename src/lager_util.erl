@@ -433,7 +433,7 @@ check_traces(Attrs, Level, [Flow|Flows], Acc) ->
 check_trace(Attrs, {Filter, _Level, Dest}) when is_list(Filter) ->
     check_trace(Attrs, {trace_all(Filter), _Level, Dest});
 
-check_trace(Attrs, {Filter, Level, Dest} = F) when is_tuple(Filter) ->
+check_trace(Attrs, {Filter, Level, Dest} = _F) when is_tuple(Filter) ->
     Made = gre:make(Attrs, [list]),
     glc:handle(?DEFAULT_TRACER, Made),
     Match = glc_lib:matches(Filter, Made),
